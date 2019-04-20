@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hello</title>
+</head>
+<body>
+
+    <h3>Hello</h3>
+    <div style="width:400px;height:100px;border:1px solid gray;">
+        <text id="test1"></text>
+    </div>
+    <div>
+        <button id="bt1">test1</button>
+    </div>
+    <div style="width:200px;height:100px;border:1px solid gray;">
+
+        <text id="test2"></text>
+    </div>
+    <div>
+        <button id="bt2">test2</button>
+    </div>
+    <div style="width:200px;height:100px;border:1px solid gray;">${hello }</div>
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+    <script>
+        $("#bt1").click(function(){
+            $.ajax({
+                type : "GET",
+                    url : "/test/test1",
+                    data : {
+                    "telegram" : "PLZPUNKT",
+                        "version" : "0001"
+                },
+                dataType : "json",
+                    contentType: "application/json",
+                    success : function(data) {
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+</body>
+</html>

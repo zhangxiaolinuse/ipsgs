@@ -1,0 +1,53 @@
+#全局设置
+server:
+  port: 8089
+  servlet:
+    context-path: /IPS-GS
+logging:
+  config: classpath:config/logback-config.xml
+#spring设置
+spring:
+#  spring.freemarker.template-loader-path=classpath:/views/
+  #  自动重启true
+  devtools:
+    restart:
+      enabled: true
+  jpa:
+    show-sql: true
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+  #通过resful访问返回jsp页面设置以及路径,如果返回的是jsp页面的话，可以通过以下配置实现
+  mvc:
+    view:
+    #  static-path-pattern: /public
+      #如果使用/views/  如果是 prefix: /为resources中static下面的html文件
+#      prefix: /views/ 为jsp情况下在resources下新建webapp下的views目录；
+      # prefix: classpath:/templates/ #/views/  templates
+      prefix: /
+      suffix: .html   #.jsp
+  #    static-path-pattern: /webapp/**
+        # 定位页面的目录到static/下
+        # spring.mvc.view.prefix=/
+        # spring.mvc.view.suffix=.html
+        # 定位模板的目录  如果定位到templates目录下，spring.thymeleaf.enabled=true必须设置有效，或者省略也可以，不能设置成false
+        # spring.mvc.view.prefix=classpath:/templates/
+      # 给返回的页面添加后缀名
+      # spring.mvc.view.suffix=.html
+  #静态资源路径设置
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  #由于设置的双数据源，数据源配置由以下文件完成
+  datasource:
+    ## primary database
+    primary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbcUrl: jdbc:mysql://localhost:3306/primary?setUnicode=true&characterEncoding=utf8
+      username: root
+      password: 123456
+      ## second database
+    second:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbcUrl: jdbc:mysql://localhost:3306/second?setUnicode=true&characterEncoding=utf8
+      username: root
+      password: 123456

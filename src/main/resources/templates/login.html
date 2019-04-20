@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<title>html5星空背景的登录页面带粒子特效</title>-->
+    <title>自动化测试系统登录</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/jquery/demo/css/normalize.css}" />
+    <link type="text/css" rel="stylesheet" th:href="@{/jquery/demo/css/demo.css}" />
+    <!--<link type="text/css" rel="stylesheet" href="../jquery/demo/css/normalize.css" />
+    <link type="text/css" rel="stylesheet" href="../jquery/demo/css/demo.css" />-->
+    <!--必要样式-->
+    <link type="text/css" rel="stylesheet" th:href="@{/jquery/demo/css/component.css}" />
+    <!--[if IE]>
+    <script src="js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="container demo-1">
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <div class="logo_box">
+                <h3>欢迎登录</h3>
+                <form action="/IPS-GS/login" name="form1" id="form1" method="post" onsubmit="return checkLogin();">
+                    <div class="input_outer">
+                        <span class="u_user"></span>
+                        <input name="username" id="username" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+                    </div>
+                    <div class="input_outer">
+                        <span class="us_uer"></span>
+                        <input name="password" id="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="mb2">
+                        <button type="submit" class="act-but submit" style="color: #FFFFFF;width:340px">登录</button>
+                        <button type="button" class="act-but submit" style="color: #FFFFFF;width:340px" onclick="postman()">postman测试</button>
+                    </div>
+                   <!-- <a type="submit" class="act-but submit" href="javascript:;" style="color: #FFFFFF">登录</a>-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/jquery/demo/js/TweenLite.min.js}"></script>
+<script type="text/javascript" th:src="@{/jquery/demo/js/EasePack.min.js}"></script>
+<script type="text/javascript" th:src="@{/jquery/demo/js/rAF.js}"></script>
+<script type="text/javascript" th:src="@{/jquery/demo/js/demo-1.js}"></script>
+<script type="text/javascript" th:src="@{/jquery/js/jquery.min.js}"></script>
+<script type='text/JavaScript'>
+    function postman(){
+    var requesturl = 'http://localhost:8088/test/test1';
+    //var requesturl = 'http://127.0.0.1:8011/api/print';
+        $.ajax({
+            type : "POST",
+            url : requesturl,
+            data : {"data":JSON.stringify({
+                    "subsidiaryUuid": "3d18a432cb9d451a96364fb5a511e6f0",
+                    "enterpriseCode": "GC41",
+                    "fastInputCode": "2",
+                    "paperNum": "0002049311",								//1.纸张编号
+                    "vehicleCertificationNum": "GC418522222211",			//2.合格证编号
+                    "vin": "LBV2W3100JMJ54478",								//3.车辆识别
+                    "productAnnouncement": "2",
+                    "announcementBatch": "3",
+                    "announcementEffectiveDate": "2010-01-05",
+                    "vehicleClass": "乘用车及客车",
+                    "configSequenceNum": "123ass07010004",
+                    "isPureElectricMarking": 0,
+                    "steeringAxisNum": "1",
+                    "licenceDate": "2010-01-06",
+                    "vehicleManufacturer": "33",
+                    "vehicleBrand": "阿斯如牌",
+                    "vehicleName": "3",
+                    "vehicleModel": "ZMC3N5FS026",
+                    "bodyColor": "哦色",
+                    "chassisType": "3",
+                    "chassisId": "2222221",
+                    "chassisCertificationNum": "GC415622222236",
+                    "engineType": "3",
+                    "engineNum": "5",
+                    "fuelType": "汽油",
+                    "displacement": "3",
+                    "power": "3",
+                    "effluentStandard": "3",
+                    "fuelConsumption": "3",
+                    "verandahLength": "3",
+                    "verandahWide": "3",
+                    "verandahHigh": "3",
+                    "containerLength": "3",
+                    "containerWide": "3",
+                    "containerHigh": "3",
+                    "steelSpringNum": "33",
+                    "tyreNum": "3",
+                    "tyreSize": "3",
+                    "frontGauge": "3",
+                    "trackRear": "3",
+                    "wheelbase": "3",
+                    "axleLoad": "3",
+                    "axlesNum": "3",
+                    "turnForm": "方向盘",
+                    "totalWeight": "33",
+                    "kerbWeight": "32",
+                    "ratedCapacity": "3",
+                    "carryingUtilizationFactor": "",
+                    "tractionTotalWeight": "33",
+                    "maxTotalWeight": "",
+                    "passengers": "",
+                    "ratedPassenger": "3",
+                    "maxDesignSpeed": "3",
+                    "manufactureDate": "2010-01-05",
+                    "enterpriseStandard": "XXXX-XXXX《XXXX》",
+                    "vehicleProductionUnitName": "3",
+                    "vehicleProductionUnitAddress": "3",
+                    "remark": "3",
+                    "otherInfo": "3",
+                    "isMzxnygzsml": "",
+                    "chassisModel": "",
+                    "vehicleIdentificationNum": null,
+                    "applyType": 0,
+                    "vehicleStateInfo": "QX",
+                    "clientType":"V5"
+                })},
+            dataType : "json",
+            success : function(json) {
+                var result = 'success:' + JSON.stringify(json);
+                console.log(result);
+            },
+            error : function(e) {
+                console.log(e);
+            }
+        });
+
+
+    // $.ajax({
+    //     type : 'POST',
+    //     async : false,
+    //     url : requesturl ,
+    //     contentType :'application/json;charset=utf-8',
+    //     data : JSON.stringify({
+    //         "subsidiaryUuid": "3d18a432cb9d451a96364fb5a511e6f0",
+    //         "enterpriseCode": "GC41",
+    //         "fastInputCode": "2",
+    //         "paperNum": "0002049311",								//1.纸张编号
+    //         "vehicleCertificationNum": "GC418522222211",			//2.合格证编号
+    //         "vin": "LBV2W3100JMJ54478",								//3.车辆识别
+    //         "productAnnouncement": "2",
+    //         "announcementBatch": "3",
+    //         "announcementEffectiveDate": "2010-01-05",
+    //         "vehicleClass": "乘用车及客车",
+    //         "configSequenceNum": "123ass07010004",
+    //         "isPureElectricMarking": 0,
+    //         "steeringAxisNum": "1",
+    //         "licenceDate": "2010-01-06",
+    //         "vehicleManufacturer": "33",
+    //         "vehicleBrand": "阿斯如牌",
+    //         "vehicleName": "3",
+    //         "vehicleModel": "ZMC3N5FS026",
+    //         "bodyColor": "哦色",
+    //         "chassisType": "3",
+    //         "chassisId": "2222221",
+    //         "chassisCertificationNum": "GC415622222236",
+    //         "engineType": "3",
+    //         "engineNum": "5",
+    //         "fuelType": "汽油",
+    //         "displacement": "3",
+    //         "power": "3",
+    //         "effluentStandard": "3",
+    //         "fuelConsumption": "3",
+    //         "verandahLength": "3",
+    //         "verandahWide": "3",
+    //         "verandahHigh": "3",
+    //         "containerLength": "3",
+    //         "containerWide": "3",
+    //         "containerHigh": "3",
+    //         "steelSpringNum": "33",
+    //         "tyreNum": "3",
+    //         "tyreSize": "3",
+    //         "frontGauge": "3",
+    //         "trackRear": "3",
+    //         "wheelbase": "3",
+    //         "axleLoad": "3",
+    //         "axlesNum": "3",
+    //         "turnForm": "方向盘",
+    //         "totalWeight": "33",
+    //         "kerbWeight": "32",
+    //         "ratedCapacity": "3",
+    //         "carryingUtilizationFactor": "",
+    //         "tractionTotalWeight": "33",
+    //         "maxTotalWeight": "",
+    //         "passengers": "",
+    //         "ratedPassenger": "3",
+    //         "maxDesignSpeed": "3",
+    //         "manufactureDate": "2010-01-05",
+    //         "enterpriseStandard": "XXXX-XXXX《XXXX》",
+    //         "vehicleProductionUnitName": "3",
+    //         "vehicleProductionUnitAddress": "3",
+    //         "remark": "3",
+    //         "otherInfo": "3",
+    //         "isMzxnygzsml": "",
+    //         "chassisModel": "",
+    //         "vehicleIdentificationNum": null,
+    //         "applyType": 0,
+    //         "vehicleStateInfo": "QX",
+    //         "clientType":"V5"
+    //     }),
+    //     dataType : 'json',
+    //     scriptCharset : 'UTF-8',
+    //     success : function(json) {
+    //         var result = 'success:' + JSON.stringify(json);
+    //         console.log(result);
+    //     },
+    //     error : function(e) {
+    //         console.log(e);
+    //     }
+    // });
+    }
+</script>
+<script type="text/javascript">
+    // onsubmit值为true时，提交表单，否则显示错误信息
+    // 生成用户名+密码组合的md5值，并设置传给后端的密码为该md5值
+    function checkLogin() {
+        var name = $("#username").val().toLowerCase();
+        var pwd = $("#password").val().toLowerCase();
+        if(name.trim()=="" || pwd.trim()=="") {
+            $("#message").text("请输入用户名和密码");
+            $('.msg').show();
+            return false;
+        }else {
+            $('.msg').hide();
+        }
+
+        // var md5info = name + pwd;
+        // $('#hidePwd').val(md5(md5info));
+        //$("#password").val();
+        return true;
+    }
+</script>
+</body>
+</html>
